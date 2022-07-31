@@ -1,7 +1,7 @@
 module github.com/xgfone/go-opentelemetry/jaegerexporter
 
 require (
-	github.com/xgfone/go-opentelemetry v0.0.0
+	github.com/xgfone/go-opentelemetry v0.1.0
 	go.opentelemetry.io/otel v1.8.0
 	go.opentelemetry.io/otel/exporters/jaeger v1.8.0
 	go.opentelemetry.io/otel/sdk v1.8.0

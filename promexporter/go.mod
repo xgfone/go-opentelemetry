@@ -2,7 +2,7 @@ module github.com/xgfone/go-opentelemetry/promexporter
 
 require (
 	github.com/prometheus/client_golang v1.12.2
-	github.com/xgfone/go-opentelemetry v0.0.0
+	github.com/xgfone/go-opentelemetry v0.1.0
 	go.opentelemetry.io/otel/exporters/prometheus v0.31.0
 	go.opentelemetry.io/otel/metric v0.31.0
 	go.opentelemetry.io/otel/sdk/metric v0.31.0
