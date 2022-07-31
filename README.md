@@ -10,8 +10,8 @@ module myapp
 require (
 	github.com/prometheus/client_golang v1.12.2
 	github.com/xgfone/go-opentelemetry v0.1.0
-	github.com/xgfone/go-opentelemetry/jaegerexporter v0.1.0
-	github.com/xgfone/go-opentelemetry/promexporter v0.1.0
+	github.com/xgfone/go-opentelemetry/jaegerexporter v0.1.1
+	github.com/xgfone/go-opentelemetry/promexporter v0.1.1
 )
 
 go 1.17
