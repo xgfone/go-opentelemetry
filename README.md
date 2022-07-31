@@ -38,12 +38,12 @@ func init() {
 	promexporter.Install(registry)
 }
 
-func wrapHandler(serverName string, handler http.HandlerFunc) http.Handler {
-	return opentelemetry.Handler(handler, serverName)
+func wrapHandler(handler http.HandlerFunc) http.Handler {
+	return opentelemetry.Handler(handler, "ServerName")
 }
 
 func main() {
-	http.Handle("/path", wrapHandler("localhost", func(w http.ResponseWriter, r *http.Request) {
+	http.Handle("/path", wrapHandler(func(w http.ResponseWriter, r *http.Request) {
 		// TODO
 	}))
 
