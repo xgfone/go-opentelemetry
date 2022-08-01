@@ -2,7 +2,7 @@ module github.com/xgfone/go-opentelemetry/sqlx
 
 require (
 	github.com/XSAM/otelsql v0.15.0
-	github.com/xgfone/go-opentelemetry v0.1.0
+	github.com/xgfone/go-opentelemetry v0.2.0
 	github.com/xgfone/sqlx v0.21.0
 )
 
