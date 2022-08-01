@@ -18,7 +18,6 @@ import (
 	"context"
 	"net/http"
 
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"go.opentelemetry.io/otel/sdk/resource"
 	semconv "go.opentelemetry.io/otel/semconv/v1.10.0"
 )
@@ -52,20 +51,4 @@ func SetServiceName(serviceName string) {
 	if err != nil {
 		panic(err)
 	}
-}
-
-// HTTPClient returns a http.Client with the roundtripper wrapped by OpenTelemetry.
-func HTTPClient(rt http.RoundTripper, opts ...otelhttp.Option) *http.Client {
-	if rt == nil {
-		rt = http.DefaultTransport
-	}
-
-	return &http.Client{
-		Transport: otelhttp.NewTransport(rt, opts...),
-	}
-}
-
-// Handler returns a new http.Handler wrapped by OpenTelemetry.
-func Handler(handler http.Handler, serverName string, opts ...otelhttp.Option) http.Handler {
-	return otelhttp.NewHandler(handler, serverName, opts...)
 }
