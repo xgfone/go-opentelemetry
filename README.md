@@ -9,9 +9,9 @@ module myapp
 
 require (
 	github.com/prometheus/client_golang v1.12.2
-	github.com/xgfone/go-opentelemetry v0.2.0
-	github.com/xgfone/go-opentelemetry/jaegerexporter v0.2.0
-	github.com/xgfone/go-opentelemetry/promexporter v0.2.0
+	github.com/xgfone/go-opentelemetry v0.3.0
+	github.com/xgfone/go-opentelemetry/jaegerexporter v0.3.0
+	github.com/xgfone/go-opentelemetry/promexporter v0.3.0
 )
 
 go 1.17
@@ -26,6 +26,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/xgfone/go-opentelemetry"
 	"github.com/xgfone/go-opentelemetry/jaegerexporter"
+	"github.com/xgfone/go-opentelemetry/otelhttpx"
 	"github.com/xgfone/go-opentelemetry/promexporter"
 )
 
@@ -39,7 +40,7 @@ func init() {
 }
 
 func wrapHandler(handler http.HandlerFunc) http.Handler {
-	return opentelemetry.Handler(handler, "Operation")
+	return otelhttpx.Handler(handler, "Operation")
 }
 
 func main() {

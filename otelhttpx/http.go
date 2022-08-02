@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package opentelemetry
+package otelhttpx
 
 import (
 	"net/http"
@@ -20,8 +20,8 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
-// HTTPClient returns a http.Client with the roundtripper wrapped by OpenTelemetry.
-func HTTPClient(rt http.RoundTripper, opts ...otelhttp.Option) *http.Client {
+// Client returns a http.Client with the roundtripper wrapped by OpenTelemetry.
+func Client(rt http.RoundTripper, opts ...otelhttp.Option) *http.Client {
 	if rt == nil {
 		rt = http.DefaultTransport
 	}
