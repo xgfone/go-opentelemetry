@@ -20,14 +20,15 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
-// Client returns a http.Client with the roundtripper wrapped by OpenTelemetry.
-func Client(rt http.RoundTripper, opts ...otelhttp.Option) *http.Client {
-	if rt == nil {
-		rt = http.DefaultTransport
-	}
-
-	return &http.Client{
-		Transport: otelhttp.NewTransport(rt, opts...),
+// RoundTripper returns a new http.RoundTripper wrapped by OpenTelemetry.
+func RoundTripper(rt http.RoundTripper, opts ...otelhttp.Option) http.RoundTripper {
+	switch rt.(type) {
+	case *otelhttp.Transport:
+		return rt
+	case nil:
+		return otelhttp.NewTransport(http.DefaultTransport, opts...)
+	default:
+		return otelhttp.NewTransport(rt, opts...)
 	}
 }
 
