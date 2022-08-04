@@ -20,6 +20,11 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
+// InstallClient wraps the default http client with OpenTelemetry.
+func InstallClient(opts ...otelhttp.Option) {
+	http.DefaultClient.Transport = RoundTripper(http.DefaultClient.Transport, opts...)
+}
+
 // RoundTripper returns a new http.RoundTripper wrapped by OpenTelemetry.
 func RoundTripper(rt http.RoundTripper, opts ...otelhttp.Option) http.RoundTripper {
 	switch rt.(type) {
