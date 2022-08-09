@@ -16,7 +16,6 @@ package opentelemetry
 
 import (
 	"context"
-	"net/http"
 
 	"go.opentelemetry.io/otel/sdk/resource"
 	semconv "go.opentelemetry.io/otel/semconv/v1.10.0"
@@ -35,8 +34,6 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-
-	http.DefaultClient = HTTPClient(http.DefaultTransport)
 }
 
 // SetServiceName sets the service name in the resource.
