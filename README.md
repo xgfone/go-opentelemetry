@@ -9,9 +9,9 @@ module myapp
 
 require (
 	github.com/prometheus/client_golang v1.12.2
-	github.com/xgfone/go-opentelemetry v0.3.0
+	github.com/xgfone/go-opentelemetry v0.3.1
 	github.com/xgfone/go-opentelemetry/jaegerexporter v0.3.0
-	github.com/xgfone/go-opentelemetry/otelhttpx v0.3.0
+	github.com/xgfone/go-opentelemetry/otelhttpx v0.3.1
 	github.com/xgfone/go-opentelemetry/promexporter v0.3.0
 )
 
@@ -38,6 +38,7 @@ func init() {
 	opentelemetry.SetServiceName("ServiceName")
 	jaegerexporter.Install(nil, nil)
 	promexporter.Install(registry)
+	otelhttpx.InstallClient()
 }
 
 func wrapHandler(handler http.HandlerFunc) http.Handler {
