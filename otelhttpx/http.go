@@ -41,3 +41,9 @@ func RoundTripper(rt http.RoundTripper, opts ...otelhttp.Option) http.RoundTripp
 func Handler(handler http.Handler, operation string, opts ...otelhttp.Option) http.Handler {
 	return otelhttp.NewHandler(handler, operation, opts...)
 }
+
+// WithRouteTag annotates a span with the provided route name using the
+// RouteKey Tag.
+func WithRouteTag(route string, h http.Handler) http.Handler {
+	return otelhttp.WithRouteTag(route,h)
+}
